@@ -2,90 +2,63 @@ export default function Header() {
   return (
     <div className="container">
       <div className="col-10 offset-1">
-        <nav className="navbar navbar-expand-lg navbar-light bg-info p-3">
-          <div className="container-fluid">
-            <a className="navbar-brand" href="#">
-              DBook Inc
-            </a>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNavDropdown"
-              aria-controls="navbarNavDropdown"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
+        <nav className="navbar navbar-expand-lg navbar-light">
+          <div className="container-fluid" style={{ height: "103px" }}>
+            <div
+              className="text-primary h-100 bg-body-secondary d-flex flex-column justify-content-center align-items-center"
+              style={{ width: "384px" }}
             >
-              <span className="navbar-toggler-icon"></span>
-            </button>
+              <div>
+                <b>
+                  <i>Branding Placeholder1</i>
+                </b>
+              </div>
+              <div>
+                <b>
+                  <i>384 * 103px</i>
+                </b>
+              </div>
+            </div>
 
-            <div className=" collapse navbar-collapse" id="navbarNavDropdown">
-              <ul className="navbar-nav ms-auto ">
+            <div className="d-flex align-items-end h-100">
+              <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                  <a className="nav-link mx-2 active" aria-current="page" href="#">
-                    Home
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link mx-2" href="#">
-                    Products
+                  <a className="nav-link mx-2 text-primary" href="/">
+                    <b><u>Home</u></b>
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link mx-2" href="#">
-                    Pricing
+                  <a className="nav-link mx-2 text-black" href="/">
+                    <b>History</b>
                   </a>
                 </li>
-                <li className="nav-item dropdown">
-                  <a
-                    className="nav-link mx-2 dropdown-toggle"
-                    href="#"
-                    id="navbarDropdownMenuLink"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Company
-                  </a>
-                  <ul
-                    className="dropdown-menu"
-                    aria-labelledby="navbarDropdownMenuLink"
-                  >
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Blog
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        About Us
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Contact us
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-              <ul className="navbar-nav ms-auto d-none d-lg-inline-flex">
-                <li className="nav-item mx-2">
-                  <a className="nav-link text-dark h5" href="" target="blank">
-                    <i className="fab fa-google-plus-square"></i>
+                <li className="nav-item">
+                  <a className="nav-link mx-2 text-black" href="/">
+                    <b>Data</b>
                   </a>
                 </li>
-                <li className="nav-item mx-2">
-                  <a className="nav-link text-dark h5" href="" target="blank">
-                    <i className="fab fa-twitter"></i>
-                  </a>
-                </li>
-                <li className="nav-item mx-2">
-                  <a className="nav-link text-dark h5" href="" target="blank">
-                    <i className="fab fa-facebook-square"></i>
+                <li className="nav-item">
+                  <a className="nav-link mx-2 text-black" href="/">
+                    <b>Reports</b>
                   </a>
                 </li>
               </ul>
+            </div>
+
+            <div
+              className="text-primary h-100 bg-body-secondary d-flex flex-column justify-content-center align-items-center"
+              style={{ width: "384px" }}
+            >
+              <div>
+                <b>
+                  <i>Branding Placeholder1</i>
+                </b>
+              </div>
+              <div>
+                <b>
+                  <i>384 * 103px</i>
+                </b>
+              </div>
             </div>
           </div>
         </nav>
