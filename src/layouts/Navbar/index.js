@@ -4,10 +4,12 @@ export default function Navbar() {
       <div className="container">
         <div className="col-10 offset-1 d-flex justify-content-between align-items-center">
           <div>
-            <span className="text-white">
+            <a className="text-white" href="/">
               <u>Application in Progress</u>
-            </span>
-            <span className="text-white ms-3">Returned Applications</span>
+            </a>
+            <a className="text-white ms-3 text-decoration-none" href="/">
+              Returned Applications
+            </a>
           </div>
           <div>
             <div className="d-flex align-items-center gap-3">
