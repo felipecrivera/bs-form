@@ -58,7 +58,7 @@ export default function Home() {
                       <br />
                       Click to deselect documents
                       <br />
-                      <br />
+                      <span className="fs-7">{formData.invoiceFile?.name}</span>
                     </>
                   ) : (
                     <>
@@ -102,7 +102,7 @@ export default function Home() {
                       <br />
                       Click to deselect documents
                       <br />
-                      <br />
+                      <span className="fs-7">{formData.certificateFile?.name}</span>
                     </>
                   ) : (
                     <>
@@ -146,7 +146,7 @@ export default function Home() {
                       <br />
                       Click to deselect documents
                       <br />
-                      <br />
+                      <span className="fs-7">{formData.attachmentsFile?.name}</span>
                     </>
                   ) : (
                     <>
