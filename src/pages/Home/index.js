@@ -1,13 +1,20 @@
 import { useState } from "react";
+import axios from "axios";
+import toastr from "toastr";
+
 export default function Home() {
   const initData = {
     poNumberChecks: [],
     processingMethod: [],
-  }
+  };
 
   const [formData, setFormData] = useState(initData);
 
-  const resetForm = () => setFormData(initData)
+  const resetForm = () => setFormData(initData);
+  const saveForm = () => {
+    submitForm("/save-url");
+    // setFormData(initData);
+  };
 
   const handleFormDataChange = ({ key, value }) => {
     setFormData((prev) => {
@@ -33,6 +40,32 @@ export default function Home() {
     }
   };
 
+  const submitForm = (url) => {
+    var bodyFormData = new FormData();
+
+    for (const key in formData) {
+      bodyFormData.append(key, formData[key]);
+    }
+
+    axios({
+      method: "post",
+      url: url,
+      data: bodyFormData,
+      headers: { "Content-Type": "multipart/form-data" },
+    })
+      .then(function (response) {
+        //handle success
+        console.log(response);
+      })
+      .catch(function (response) {
+        //handle error
+        console.log(response);
+      })
+      .finally(function () {
+        toastr.success(`Submitted Successfully to ${url}`);
+      });
+  };
+
   return (
     <div className="bg-body-secondary pb-5">
       <div className="container">
@@ -42,6 +75,7 @@ export default function Home() {
               <div className="p-1 bg-white text-center rounded-4">
                 Invoice(s) related to this shipment
                 <button
+                  type="button"
                   className="mt-2 btn btn-outline-secondary text-black"
                   onClick={() =>
                     formData?.invoiceFile
@@ -86,6 +120,7 @@ export default function Home() {
               <div className="p-1 bg-white text-center rounded-4">
                 Your own Certificate of Origin (optional)
                 <button
+                  type="button"
                   className="mt-2 btn btn-outline-secondary text-black"
                   onClick={() =>
                     formData?.certificateFile
@@ -132,6 +167,7 @@ export default function Home() {
               <div className="p-1 bg-white text-center rounded-4">
                 Additional Attachments (optional)
                 <button
+                  type="button"
                   className="mt-2 btn btn-outline-secondary text-black"
                   onClick={() =>
                     formData?.attachmentsFile
@@ -177,12 +213,12 @@ export default function Home() {
           </div>
           <div className="col-1 text-end d-flex flex-column align-items-end">
             <div>
-              <button className="btn" onClick={() => resetForm()}>
+              <button type="button" className="btn" onClick={() => saveForm()}>
                 <i className="bi fs-2 bi-x-circle"></i>
               </button>
             </div>
             <div>
-              <button className="btn">
+              <button type="button" className="btn" onClick={() => resetForm()}>
                 <i className="bi fs-2 bi-trash"></i>
               </button>
             </div>
@@ -523,9 +559,33 @@ export default function Home() {
               <b>USD 50.00 – Fee on final approval</b>
             </p>
             <div className="d-flex justify-content-center gap-2">
-              <button className="btn btn-warning">Save Draft</button>
-              <button className="btn btn-warning">Email Draft</button>
-              <button className="btn btn-success">Submit</button>
+              <button
+                type="button"
+                className="btn btn-warning"
+                onClick={() => {
+                  submitForm("/save-draft");
+                }}
+              >
+                Save Draft
+              </button>
+              <button
+                type="button"
+                className="btn btn-warning"
+                onClick={() => {
+                  submitForm("/email-draft");
+                }}
+              >
+                Email Draft
+              </button>
+              <button
+                type="button"
+                className="btn btn-success"
+                onClick={() => {
+                  submitForm("/submit");
+                }}
+              >
+                Submit
+              </button>
             </div>
             <div className="border border-secondary py-2 px-3 bg-white mt-3">
               <p className="text-secondary mb-5">
