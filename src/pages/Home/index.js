@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 export default function Home() {
-  const [formData, setFormData] = useState({
+  const initData = {
     poNumberChecks: [],
     processingMethod: [],
-  });
+  }
+
+  const [formData, setFormData] = useState(initData);
+
+  const resetForm = () => setFormData(initData)
 
   const handleFormDataChange = ({ key, value }) => {
     setFormData((prev) => {
@@ -28,10 +32,6 @@ export default function Home() {
       });
     }
   };
-
-  useEffect(() => {
-    console.log(formData, "+++++");
-  }, [formData]);
 
   return (
     <div className="bg-body-secondary pb-5">
@@ -102,7 +102,9 @@ export default function Home() {
                       <br />
                       Click to deselect documents
                       <br />
-                      <span className="fs-7">{formData.certificateFile?.name}</span>
+                      <span className="fs-7">
+                        {formData.certificateFile?.name}
+                      </span>
                     </>
                   ) : (
                     <>
@@ -146,7 +148,9 @@ export default function Home() {
                       <br />
                       Click to deselect documents
                       <br />
-                      <span className="fs-7">{formData.attachmentsFile?.name}</span>
+                      <span className="fs-7">
+                        {formData.attachmentsFile?.name}
+                      </span>
                     </>
                   ) : (
                     <>
@@ -173,7 +177,7 @@ export default function Home() {
           </div>
           <div className="col-1 text-end d-flex flex-column align-items-end">
             <div>
-              <button className="btn">
+              <button className="btn" onClick={() => resetForm()}>
                 <i className="bi fs-2 bi-x-circle"></i>
               </button>
             </div>
@@ -196,7 +200,7 @@ export default function Home() {
                 </label>
                 <select
                   className="form-select form-select-sm mt-1"
-                  value={formData?.consignorSelect}
+                  value={formData?.consignorSelect ?? ""}
                   onChange={(e) =>
                     handleFormDataChange({
                       key: "consignorSelect",
@@ -211,7 +215,7 @@ export default function Home() {
                 </select>
                 <textarea
                   className="form-control form-control-sm mt-2"
-                  value={formData?.consignorText}
+                  value={formData?.consignorText ?? ""}
                   onChange={(e) =>
                     handleFormDataChange({
                       key: "consignorText",
@@ -224,7 +228,7 @@ export default function Home() {
                 </label>
                 <select
                   className="form-select form-select-sm mt-1"
-                  value={formData?.consigneeSelect}
+                  value={formData?.consigneeSelect ?? ""}
                   onChange={(e) =>
                     handleFormDataChange({
                       key: "consigneeSelect",
@@ -239,7 +243,7 @@ export default function Home() {
                 </select>
                 <textarea
                   className="form-control form-control-sm mt-2"
-                  value={formData?.consigneeText}
+                  value={formData?.consigneeText ?? ""}
                   onChange={(e) =>
                     handleFormDataChange({
                       key: "consigneeText",
@@ -252,7 +256,7 @@ export default function Home() {
                 </label>
                 <select
                   className="form-select form-select-sm mt-1"
-                  value={formData?.transportSelect}
+                  value={formData?.transportSelect ?? ""}
                   onChange={(e) =>
                     handleFormDataChange({
                       key: "transportSelect",
@@ -267,7 +271,7 @@ export default function Home() {
                 </select>
                 <textarea
                   className="form-control form-control-sm mt-2"
-                  value={formData?.transportText}
+                  value={formData?.transportText ?? ""}
                   onChange={(e) =>
                     handleFormDataChange({
                       key: "transportText",
@@ -298,7 +302,7 @@ export default function Home() {
                 </label>
                 <select
                   className="form-select form-select-sm mt-1"
-                  value={formData?.countryOriginSelect}
+                  value={formData?.countryOriginSelect ?? ""}
                   onChange={(e) =>
                     handleFormDataChange({
                       key: "countryOriginSelect",
@@ -313,7 +317,7 @@ export default function Home() {
                 </select>
                 <textarea
                   className="form-control form-control-sm mt-2"
-                  value={formData?.countryOriginText}
+                  value={formData?.countryOriginText ?? ""}
                   onChange={(e) =>
                     handleFormDataChange({
                       key: "countryOriginText",
@@ -326,7 +330,7 @@ export default function Home() {
                 </label>
                 <textarea
                   className="form-control form-control-sm mt-2"
-                  value={formData?.remarkText}
+                  value={formData?.remarkText ?? ""}
                   onChange={(e) =>
                     handleFormDataChange({
                       key: "remarkText",
@@ -340,7 +344,7 @@ export default function Home() {
                 </label>
                 <textarea
                   className="form-control form-control-sm mt-1"
-                  value={formData?.shipmentWeight}
+                  value={formData?.shipmentWeight ?? ""}
                   onChange={(e) =>
                     handleFormDataChange({
                       key: "shipmentWeight",
@@ -358,7 +362,7 @@ export default function Home() {
                 <div className="d-flex align-items-center">
                   <select
                     className="form-select form-select-sm mt-1 w-50"
-                    value={formData?.itemNumberSelect}
+                    value={formData?.itemNumberSelect ?? ""}
                     onChange={(e) =>
                       handleFormDataChange({
                         key: "itemNumberSelect",
@@ -378,7 +382,7 @@ export default function Home() {
                 <textarea
                   className="form-control form-control-sm mt-2"
                   rows="15"
-                  value={formData?.itemNumberText}
+                  value={formData?.itemNumberText ?? ""}
                   onChange={(e) =>
                     handleFormDataChange({
                       key: "itemNumberText",
@@ -506,7 +510,7 @@ export default function Home() {
               </p>
               <textarea
                 className="form-control form-control-sm mt-2"
-                value={formData?.specialInstructions}
+                value={formData?.specialInstructions ?? ""}
                 onChange={(e) =>
                   handleFormDataChange({
                     key: "specialInstructions",
